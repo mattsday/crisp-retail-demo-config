@@ -1,0 +1,14 @@
+apiVersion: configmanagement.gke.io/v1
+kind: ConfigManagement
+metadata:
+  name: config-management
+spec:
+  # clusterName is required and must be unique among all managed clusters
+  clusterName: demo-cluster-a
+  configConnector:
+    enabled: true
+  git:
+    syncRepo: git@github.com:mattsday/crisp-retail-demo-config.git
+    syncBranch: master
+    secretType: ssh
+    policyDir: "policies"
